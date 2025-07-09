@@ -1,0 +1,81 @@
+Los nombres de las clases de Python comienzan con una letra mayúscula. Todos los demás identificadores comienzan con una letra minúscula.
+
+Iniciar un identificador con un único guión bajo inicial indica que el identificador es privado identificador.
+
+Iniciar un identificador con dos guiones bajos iniciales indica una fuerte privado identificador.
+
+Si el identificador también termina con dos guiones bajos finales, el identificador es un lenguaje-definido nombre especial.
+
+
+Declaraciones multilínea de Python
+Las declaraciones en Python normalmente terminan con una nueva línea. Sin embargo, Python permite el uso del carácter de continuación de línea (\) para indicar que la línea debe continuar. 
+Por ejemplo :
+
+total = item_one + \
+        item_two + \
+        item_three
+
+Las declaraciones contenidas entre corchetes [], {} o () no necesitan utilizar el carácter de continuación de línea. Por ejemplo, la siguiente declaración funciona bien en Python:
+
+days = ['Monday', 'Tuesday', 'Wednesday',
+        'Thursday', 'Friday']
+
+
+
+Citas en Python
+Python acepta comillas simples ('), dobles (") y triples (''' o """) para indicar cadenas literales, siempre que el mismo tipo de comilla inicie y finalice la cadena.
+
+Las comillas triples se utilizan para abarcar la cadena a lo largo de varias líneas. Por ejemplo, todo lo siguiente es legal −
+
+word = 'word'
+print (word)
+
+sentence = "This is a sentence."
+print (sentence)
+
+paragraph = """This is a paragraph. It is
+ made up of multiple lines and sentences."""
+print (paragraph)
+
+
+Esperando al usuario
+La siguiente línea del programa muestra el mensaje, la declaración que dice Presione la tecla Enter para salir y espera a que el usuario realice la acción −
+
+#!/usr/bin/python
+
+raw_input("\n\nPress the enter key to exit.")
+
+
+Múltiples declaraciones en una sola línea
+El punto y coma ( ; ) permite múltiples declaraciones en una sola línea dado que ninguna de las declaraciones inicia un nuevo bloque de código. 
+Aquí hay un fragmento de muestra usando el punto y coma −
+
+import sys; x = 'foo'; sys.stdout.write(x + '\n')
+
+
+Grupos de declaraciones múltiples como suites
+Se denomina grupo de declaraciones individuales, que forman un único bloque de código suites en Python. Las declaraciones compuestas o complejas, como if, while, def y class, 
+requieren una línea de encabezado y una suite.
+Las líneas de encabezado comienzan la declaración (con la palabra clave) y terminan con dos puntos (: ) y van seguidas de una o más líneas que componen la suite. Por ejemplo −
+
+if expression :
+   suite
+elif expression :
+   suite
+else :
+   suite
+
+
+
+Argumentos de línea de comandos en Python
+Se pueden ejecutar muchos programas para brindarle información básica sobre cómo deben ejecutarse. Python te permite hacer esto con -h −
+
+$ python3 -h
+usage: python3 [option] ... [-c cmd | -m mod | file | -] [arg] ...
+Options and arguments (and corresponding environment variables):
+-c cmd : program passed in as string (terminates option list)
+-d     : debug output from parser (also PYTHONDEBUG=x)
+-E     : ignore environment variables (such as PYTHONPATH)
+-h     : print this help message and exit
+
+[ etc. ]
