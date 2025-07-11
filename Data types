@@ -1,0 +1,235 @@
+In general, the data types are used to define the type of a variable. It represents the type of data we are going to store in a variable and determines what operations can be done on it.
+
+
+1. Python Numeric Data Types
+Python numeric data types store numeric values. Number objects are created when you assign a value to them. For example −
+
+var1 = 1       # int data type
+var2 = True    # bool data type
+var3 = 10.023  # float data type
+var4 = 10+3j   # complex data type
+
+2. Python String Data Type
+Python string is a sequence of one or more Unicode characters, enclosed in single, double or triple quotation marks (also called inverted commas).
+
+Example of String Data Type
+Open Compiler
+str = 'Hello World!'
+
+print (str)          # Prints complete string
+print (str[0])       # Prints first character of the string
+print (str[2:5])     # Prints characters starting from 3rd to 5th
+print (str[2:])      # Prints string starting from 3rd character
+print (str * 2)      # Prints string two times
+print (str + "TEST") # Prints concatenated string
+This will produce the following result −
+
+Hello World!
+H
+llo
+llo World!
+Hello World!Hello World!
+Hello World!TEST
+
+3. Python Sequence Data Types
+
+Sequence is a collection data type. It is an ordered collection of items.
+
+List Data Type
+Tuple Data Type
+Range Data Type
+
+(a) Python List Data Type
+Python Lists are the most versatile compound data types. A Python list contains items separated by commas and enclosed within square brackets ([]).
+
+>>> [2023, "Python", 3.11, 5+6j, 1.23E-4]
+
+Example of List Data Type
+Open Compiler
+list = [ 'abcd', 786 , 2.23, 'john', 70.2 ]
+tinylist = [123, 'john']
+
+print (list)            # Prints complete list
+print (list[0])         # Prints first element of the list
+print (list[1:3])       # Prints elements starting from 2nd till 3rd 
+print (list[2:])        # Prints elements starting from 3rd element
+print (tinylist * 2)    # Prints list two times
+print (list + tinylist) # Prints concatenated lists
+This produce the following result −
+
+['abcd', 786, 2.23, 'john', 70.2]
+abcd
+[786, 2.23]
+[2.23, 'john', 70.2]
+[123, 'john', 123, 'john']
+['abcd', 786, 2.23, 'john', 70.2, 123, 'john']
+
+
+(b) Python Tuple Data Type
+Python tuple is another sequence data type that is similar to a list. A Python tuple consists of a number of values separated by commas. 
+Unlike lists, however, tuples are enclosed within parentheses (...).
+
+>>> (2023, "Python", 3.11, 5+6j, 1.23E-4)
+
+Example of Tuple data Type
+Open Compiler
+tuple = ( 'abcd', 786 , 2.23, 'john', 70.2  )
+tinytuple = (123, 'john')
+
+print (tuple)               # Prints the complete tuple
+print (tuple[0])            # Prints first element of the tuple
+print (tuple[1:3])          # Prints elements of the tuple starting from 2nd till 3rd 
+print (tuple[2:])           # Prints elements of the tuple starting from 3rd element
+print (tinytuple * 2)       # Prints the contents of the tuple twice
+print (tuple + tinytuple)   # Prints concatenated tuples
+
+This produce the following result −
+
+('abcd', 786, 2.23, 'john', 70.2)
+abcd
+(786, 2.23)
+(2.23, 'john', 70.2)
+(123, 'john', 123, 'john')
+('abcd', 786, 2.23, 'john', 70.2, 123, 'john')
+
+
+(c) Python Range Data Type
+A Python range is an immutable sequence of numbers which is typically used to iterate through a specific number of items.
+
+It is represented by the Range class.
+
+start: Integer number to specify starting position, (Its optional, Default: 0)
+
+stop: Integer number to specify ending position (It's mandatory)
+
+step: Integer number to specify increment, (Its optional, Default: 1)
+
+Example of Range Data Type
+Following is a program which uses for loop to print number from 0 to 4 −
+
+for i in range(5):
+  print(i)
+This produce the following result −
+
+0
+1
+2
+3
+4
+
+4. Python Binary Data Types
+bytes
+bytearray
+memoryview
+
+(a) Python Bytes Data Type
+
+Example of Bytes Data Type
+In the following example, we are using the built-in bytes() function to explicitly specify a sequence of numbers representing ASCII values −
+
+Open Compiler
+# Using bytes() function to create bytes
+b1 = bytes([65, 66, 67, 68, 69])  
+print(b1)  
+The result obtained is as follows −
+
+b'ABCDE'
+
+(b) Python Bytearray Data Type
+
+Example of Bytearray Data Type
+In the example below, we are creating a bytearray by passing an iterable of integers representing byte values −
+
+Open Compiler
+# Creating a bytearray from an iterable of integers
+value = bytearray([72, 101, 108, 108, 111])  
+print(value)  
+The output obtained is as shown below −
+
+bytearray(b'Hello')
+
+(c) Python Memoryview Data Type
+In Python, a memoryview is a built-in object that provides a view into the memory of the original object, generally objects that support the buffer protocol, 
+such as byte arrays (bytearray) and bytes (bytes).
+
+Example of Memoryview Data Type
+In the given example, we are creating a memoryview object directly by passing a supported object to the memoryview() constructor. The supported objects generally include byte arrays 
+(bytearray), bytes (bytes), and other objects that support the buffer protocol −
+
+Open Compiler
+data = bytearray(b'Hello, world!')
+view = memoryview(data)
+print(view)
+Following is the output of the above code −
+
+<memory at 0x00000186FFAA3580>
+
+
+5. Python Dictionary Data Type
+
+Python dictionaries are kind of hash table type. A dictionary key can be almost any Python type, but are usually numbers or strings. 
+Values, on the other hand, can be any arbitrary Python object.
+
+Example of Dictionary Data Type
+Open Compiler
+dict = {}
+dict['one'] = "This is one"
+dict[2]     = "This is two"
+
+tinydict = {'name': 'john','code':6734, 'dept': 'sales'}
+
+
+print (dict['one'])       # Prints value for 'one' key
+print (dict[2])           # Prints value for 2 key
+print (tinydict)          # Prints complete dictionary
+print (tinydict.keys())   # Prints all the keys
+print (tinydict.values()) # Prints all the values
+This produce the following result −
+
+This is one
+This is two
+{'dept': 'sales', 'code': 6734, 'name': 'john'}
+['dept', 'code', 'name']
+['sales', 6734, 'john']
+
+
+6. Python Set Data Type
+
+Set is a Python implementation of set as defined in Mathematics. A set in Python is a collection, but is not an indexed or ordered collection as string, list or tuple. 
+An object cannot appear more than once in a set, whereas in List and Tuple, same object can appear more than once.
+
+Comma separated items in a set are put inside curly brackets or braces {}. Items in the set collection can be of different data types.
+
+>>> {2023, "Python", 3.11, 5+6j, 1.23E-4}
+{(5+6j), 3.11, 0.000123, 'Python', 2023}
+
+Example of Set
+set1 = {123, 452, 5, 6}
+set2 = {'Java', 'Python', 'JavaScript'}
+
+print(set1)
+print(set2)
+This will generate the following output −
+
+{123, 452, 5, 6}
+{'Python', 'JavaScript', 'Java'}
+
+_______________________________________________________________________________________________________________________________________________________________________-
+
+Primitive and Non-primitive Data Types
+The above-explained data types can also be categorized as primitive and non-primitive.
+
+1. Primitive Types
+The primitive data types are the fundamental data types that are used to create complex data types (sometimes called complex data structures). There are mainly four primitive data types, which are −
+
+Integers
+Floats
+Booleans, and
+Strings
+2. Non-primitive Types
+The non-primitive data types store values or collections of values. There are mainly four types of non-primitive types, which are −
+
+Lists
+Tuples
+Dictionaries, and
+Sets
