@@ -1,0 +1,66 @@
+Introduction to the if Statement
+
+if <expr>:
+    <statement>
+In the form shown above:
+
+<expr> is an expression evaluated in a Boolean context, as discussed in the section on Logical Operators in the Operators and Expressions in Python tutorial.
+<statement> is a valid Python statement, which must be indented. (You will see why very soon.)
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+Python: It’s All About the Indentation
+Python follows a convention known as the off-side rule
+Thus, a compound if statement in Python looks like this:
+
+if <expr>:
+    <statement>
+    <statement>
+    ...
+    <statement>
+<following_statement>
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+The else and elif Clauses
+
+you want to evaluate a condition and take one path if it is true but specify an alternative path if it is not. This is accomplished with an else clause:
+
+if <expr>:
+    <statement(s)>
+else:
+    <statement(s)>
+
+
+
+>>> x = 20
+
+>>> if x < 50:
+...     print('(first suite)')
+...     print('x is small')
+... else:
+...     print('(second suite)')
+...     print('x is large')
+
+___________________________________________________________________________________________________________________________________________________________________
+
+ For this, use one or more elif (short for else if) clauses. Python evaluates each <expr> in turn and executes the suite corresponding to the first that is true. 
+If none of the expressions are true, and an else clause is specified, then its suite is executed:
+
+>>> name = 'Joe'
+>>> if name == 'Fred':
+...     print('Hello Fred')
+... elif name == 'Xander':
+...     print('Hello Xander')
+... elif name == 'Joe':
+...     print('Hello Joe')
+... elif name == 'Arnold':
+...     print('Hello Arnold')
+... else:
+...     print("I don't know who you are!")
+...
+Hello Joe
+
+
+
+
+
