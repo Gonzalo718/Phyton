@@ -1,0 +1,59 @@
+RAISE                                                                                                                                            https://realpython.com/python-exceptions/
+
+Con el raise Palabra clave: puedes generar cualquier objeto de excepción en Python y detener tu programa cuando ocurre una condición no deseada
+
+number = 10
+if number > 5:
+    raise Exception(f"The number should not exceed 5. ({number=})")
+print(number)
+
+_____________________________________________________________________________________________________________________________________________________
+ASSERT  
+
+Si la condición resulta ser False, entonces su programa genera un AssertionError excepción y se detiene de inmediato
+
+number = 1
+assert (number < 5), f"The number should not exceed 5. ({number=})"
+print(number)
+
+_____________________________________________________________________________________________________________________________________________________
+TRY y EXCEPT
+
+bloque para capturar y manejar excepciones.
+
+try:
+    linux_interaction()
+except RuntimeError as error:
+    print(error)
+    print("The linux_interaction() function wasn't executed.")
+
+_____________________________________________________________________________________________________________________________________________________
+TRY , EXCEPT y ELSE
+
+try:
+    linux_interaction()
+except RuntimeError as error:
+    print(error)
+else:
+    print("Doing even more Linux things.")
+
+_____________________________________________________________________________________________________________________________________________________
+TRY , EXCEPT , ELSE y FINALLY
+
+acción para limpiar después de ejecutar tu código
+
+try:
+    linux_interaction()
+except RuntimeError as error:
+    print(error)
+else:
+    try:
+        with open("file.log") as file:
+            read_data = file.read()
+    except FileNotFoundError as fnf_error:
+        print(fnf_error)
+finally:
+    print("Cleaning up, irrespective of any exceptions.")
+
+
+
