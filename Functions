@@ -1,0 +1,24 @@
+A Python function is a self-contained block of code designed to perform a specific task, which you can call and reuse in different parts of your code.
+
+Sintaxis
+
+def function_name([parameters]):
+    <block>
+
+
+A continuación, tienes un desglose de los componentes de esta sintaxis:
+
+Componente	Descripción
+def	La palabra clave que inicia la definición de la función
+function_name	Un identificador de Python válido que nombra la función
+[parameters]	Una lista opcional, separada por comas, de parámetros formales para la función
+:	La puntuación que indica el final del encabezado de la función
+<block>	El bloque de código de la función
+
+
+______________________________________________________________________________________________________________________________________________________________________________-
+ARGUMENTOS DE PALABRA CLAVE
+
+
+
+
