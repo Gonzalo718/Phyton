@@ -1,4 +1,5 @@
-In general, the data types are used to define the type of a variable. It represents the type of data we are going to store in a variable and determines what operations can be done on it.
+In general, the data types are used to define the type of a variable. It represents the type of data we are going to store in a 
+variable and determines what operations can be done on it.
 
 
 1. Python Numeric Data Types
@@ -8,9 +9,10 @@ var1 = 1       # int data type
 var2 = True    # bool data type
 var3 = 10.023  # float data type
 var4 = 10+3j   # complex data type
-
+____________________________________________________________________________________________________________________
 2. Python String Data Type
-Python string is a sequence of one or more Unicode characters, enclosed in single, double or triple quotation marks (also called inverted commas).
+Python string is a sequence of one or more Unicode characters, enclosed in single, double or triple quotation marks 
+(also called inverted commas).
 
 Example of String Data Type
 Open Compiler
@@ -30,7 +32,7 @@ llo
 llo World!
 Hello World!Hello World!
 Hello World!TEST
-
+____________________________________________________________________________________________________________________
 3. Python Sequence Data Types
 
 Sequence is a collection data type. It is an ordered collection of items.
@@ -38,7 +40,7 @@ Sequence is a collection data type. It is an ordered collection of items.
 List Data Type
 Tuple Data Type
 Range Data Type
-
+____________________________________________________________________________________________________________________
 (a) Python List Data Type
 Python Lists are the most versatile compound data types. A Python list contains items separated by commas and enclosed within square brackets ([]).
 
@@ -63,7 +65,7 @@ abcd
 [2.23, 'john', 70.2]
 [123, 'john', 123, 'john']
 ['abcd', 786, 2.23, 'john', 70.2, 123, 'john']
-
+____________________________________________________________________________________________________________________
 
 (b) Python Tuple Data Type
 Python tuple is another sequence data type that is similar to a list. A Python tuple consists of a number of values separated by commas. 
@@ -92,7 +94,7 @@ abcd
 (123, 'john', 123, 'john')
 ('abcd', 786, 2.23, 'john', 70.2, 123, 'john')
 
-
+____________________________________________________________________________________________________________________
 (c) Python Range Data Type
 A Python range is an immutable sequence of numbers which is typically used to iterate through a specific number of items.
 
@@ -116,12 +118,12 @@ This produce the following result −
 2
 3
 4
-
+____________________________________________________________________________________________________________________
 4. Python Binary Data Types
 bytes
 bytearray
 memoryview
-
+____________________________________________________________________________________________________________________
 (a) Python Bytes Data Type
 
 Example of Bytes Data Type
@@ -134,7 +136,7 @@ print(b1)
 The result obtained is as follows −
 
 b'ABCDE'
-
+____________________________________________________________________________________________________________________
 (b) Python Bytearray Data Type
 
 Example of Bytearray Data Type
@@ -147,7 +149,7 @@ print(value)
 The output obtained is as shown below −
 
 bytearray(b'Hello')
-
+____________________________________________________________________________________________________________________
 (c) Python Memoryview Data Type
 In Python, a memoryview is a built-in object that provides a view into the memory of the original object, generally objects that support the buffer protocol, 
 such as byte arrays (bytearray) and bytes (bytes).
@@ -163,7 +165,7 @@ print(view)
 Following is the output of the above code −
 
 <memory at 0x00000186FFAA3580>
-
+____________________________________________________________________________________________________________________
 
 5. Python Dictionary Data Type
 
@@ -191,7 +193,7 @@ This is two
 {'dept': 'sales', 'code': 6734, 'name': 'john'}
 ['dept', 'code', 'name']
 ['sales', 6734, 'john']
-
+____________________________________________________________________________________________________________________
 
 6. Python Set Data Type
 
