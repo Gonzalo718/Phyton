@@ -1,5 +1,6 @@
-A Python function is a self-contained block of code designed to perform a specific task, which you can call and reuse in different parts of your code.
-
+A Python function is a self-contained block of code designed to perform a specific task, which you can call and reuse in different 
+parts of your code.                                                            
+                                                                               https://realpython.com/defining-your-own-python-function/
 Sintaxis
 
 def function_name([parameters]):
@@ -19,6 +20,186 @@ function_name	Un identificador de Python válido que nombra la función
 ______________________________________________________________________________________________________________________________________________________________________________-
 ARGUMENTOS DE PALABRA CLAVE
 
+
+argument=value
+
+
+# Using positional arguments
+update_product(1234, 15, 2.55, "12-31-2025")
+
+# Using keyword arguments
+update_product(
+    product_id=1234,
+    quantity=15,
+    price=2.55,
+    expiration_date="12-31-2025"
+)
+____________________________________________________________________________________________________________________________________________
+REGRESANDO DE FUNCIONES
+
+Escriba una función que tome una lista de valores enteros y los duplique.
+
+>>> def double(numbers):
+...     for i, _ in enumerate(numbers):
+...         numbers[i] *= 2
+...
+
+>>> numbers = [1, 2, 3, 4, 5]
+>>> double(numbers)
+
+>>> numbers
+[2, 4, 6, 8, 10]
+
+____________________________________________________________________________________________________________________________________
+DEVOLUCION DE VALORES
+
+return
+
+Si colocas un return declaración seguida de una expresión dentro de una función Python, entonces el entorno que llama recuperará el valor
+de esa expresión:
+
+>>> def identity(x):
+...    return x
+...
+
+>>> x = identity(42)
+>>> x
+42
+___________________________________________________________________________________________________________________________
+ITERADORES DE GENERADOR QUE REGRESAN
+
+ yield
+
+son objetos que le permiten iterar sobre un flujo de datos o grandes conjuntos de datos sin almacenar todo el conjunto de datos
+en la memoria a la vez. 
+
+>>> def cumulative_average(numbers):
+...     total = 0
+...     for items, number in enumerate(numbers, 1):
+...         total += number
+...         yield total / items
+...
+
+>>> values = [5, 3, 8, 2, 5]  # Simulates a large data set
+
+>>> for cum_average in cumulative_average(values):
+...     print(f"Cumulative average: {cum_average:.2f}")
+...
+Cumulative average: 5.00
+Cumulative average: 4.00
+Cumulative average: 5.33
+Cumulative average: 4.50
+Cumulative average: 4.60
+
+cumulative_average() es un generador que calcula y produce el promedio acumulado de una secuencia de números.
+_________________________________________________________________________________________________________________________________________
+CREANDO CIERRE
+
+it’s an inner function that closes over the variables it needs from the outer function, keeping them alive for later use.
+
+>>> def function():
+...     value = 42
+...     def closure():
+...         print(f"The value is: {value}!")
+...     return closure
+...
+
+>>> reveal_number = function()
+>>> reveal_number()
+The value is: 42!
+________________________________________________________________________________________________________________________________
+Defining and Calling Functions: Advanced Features
+
+Default Argument Values
+means that you can call the function without providing a concrete argument value because you can rely on the default value.
+
+>>> def greet(name="World"):
+...     print(f"Hello, {name}!")
+...
+
+>>> greet()
+Hello, World!
+
+>>> greet("Pythonista")
+Hello, Pythonista!
+
+While defining greet(), you provide a default value to the name parameter. This way, when you call the function,
+you can rely on that default value. If you pass a concrete argument, then Python overrides the default to use whatever you passed.
+
+_______________________________________________________________________________________________________________________________
+
+TARJET
+
+remembers the data between calls. This happens because you’re using the same list object that appears as the default
+value in the function’s definition.
+
+>>> def append_to(item, target=None):
+...     if target is None:
+...         target = []
+...     target.append(item)
+...     return target
+...
+
+>>> append_to(1)
+[1]
+>>> append_to(2)
+[2]
+>>> append_to(3)
+___________________________________________________________________________________________________________________________
+Variable Number of Positional Arguments: *args
+
+a syntax for passing an arbitrary number of positional arguments to a function
+
+>>> def function(*args):
+...     print(args)
+...
+
+>>> function(1, 2, 3, 4, 5)
+(1, 2, 3, 4, 5)
+___________________________________________________________________________________________________________________________
+Variable Number of Keyword Arguments: **kwargs
+
+syntax that lets you pass an arbitrary number of keyword arguments to a function.
+
+>>> def function(**kwargs):
+...     print(kwargs)
+...
+
+>>> function(one=1, two=2, three=3)
+{'one': 1, 'two': 2, 'three': 3}
+
+___________________________________________________________________________________________________________________________
+Keyword-Only Arguments
+
+You can also define functions where you must provide arguments using the keyword syntax.
+
+>>> def sum_numbers(*numbers, precision=2):
+...     return round(sum(numbers), precision)
+...
+
+>>> sum_numbers(1.3467, 2.5243, precision=3)
+3.871
+>>> sum_numbers(1.3467, 2.5243, 3)
+6.87
+_________________________________________________________________________________________________________________________
+Descomprimir un iterable en argumentos posicionales
+
+La sintaxis *numbers En esta función la llamada indica que numbers es iterable y debe descomprimirse en valores individuales. 
+Los valores descomprimidos, 1, 2, y 3, luego se asignan a los argumentos x, y, y z, en ese orden.
+
+
+>>> def function(x, y, z):
+...     print(f"{x = }")
+...     print(f"{y = }")
+...     print(f"{z = }")
+...
+
+>>> numbers = [1, 2, 3]
+
+>>> function(*numbers)
+x = 1
+y = 2
+z = 3
 
 
 
