@@ -38,8 +38,8 @@ ________________________________________________________________________________
 Sequence is a collection data type. It is an ordered collection of items.
 
 set (conjunto)
-List Data Type
-Tuple Data Type  // INMUTABLE (no modificable)
+List Data Type                                    [ ]
+Tuple Data Type  // INMUTABLE (no modificable)    ( )                  https://thenewstack.io/python-for-beginners-when-and-how-to-use-tuples/
 Range Data Type
 ____________________________________________________________________________________________________________________
  ?) set Data type
@@ -53,7 +53,8 @@ fruit_set = {'🍎', '🍓', '🍐', '🍎', '🍎', '🍓'}
 Con este conocimiento en mente, ahora sabemos que Set también se puede usar para eliminar duplicados de una lista
 ____________________________________________________________________________________________________________________
 (a) Python List Data Type
-Python Lists are the most versatile compound data types. A Python list contains items separated by commas and enclosed within square brackets ([]).
+Python Lists are the most versatile compound data types. A Python list contains items separated by commas and enclosed 
+within square brackets ([]).
 
 >>> [2023, "Python", 3.11, 5+6j, 1.23E-4]
 
