@@ -99,4 +99,5 @@ step	   Proporciona un valor entero que representa cuÃ¡ntos elementos atravesarÃ
 >>> days[5:]
 ('Saturday', 'Sunday')
 ______________________________________________________________________________________________________________________________________________
-Explorando la inmutabilidad de las tuplas
+Embalaje y desembalaje de tuplas
+
