@@ -1,0 +1,102 @@
+Formas de creae tuplas
+
+Tupla literales
+El tuple() constructor
+
+__________________________________________________________________________________________
+Tupla literal
+
+ Consisten en una serie de objetos separados por comas.
+
+>>> jane = ("Jane Doe", 25, 1.75, "Canada")
+>>> point = (2, 7)
+>>> pen = (2, "Solid", True)
+
+>>> days = (
+...     "Monday",
+...     "Tuesday",
+...     "Wednesday",
+...     "Thursday",
+...     "Friday",
+...     "Saturday",
+...     "Sunday",
+... )
+
+
+una práctica recomendada sería utilizar el .__slots__ atributo especial para ahorrar memoria
+______________________________________________________________________________________________________
+tuple() Constructor
+
+>>> tuple(["Jane Doe", 25, 1.75, "Canada"])
+('Jane Doe', 25, 1.75, 'Canada')
+
+>>> tuple("Pythonista")
+('P', 'y', 't', 'h', 'o', 'n', 'i', 's', 't', 'a')
+
+>>> tuple({
+...     "manufacturer": "Boeing",
+...     "model": "747",
+...     "passengers": 416,
+... }.values())
+('Boeing', '747', 416)
+
+>>> tuple()
+()
+#########################################################################################################################################
+INDEXACION= acceso a los elementos de una tupla
+
+tuple_object[index]
+
+
+>>> jane = ("Jane Doe", 25, 1.75, "Canada")
+
+>>> jane[0]
+'Jane Doe'
+>>> jane[1]
+25
+>>> jane[3]
+'Canada'
+________________________________________________________________________________________________________________________________
+  len( )
+
+Te da el tamaño de la tupla
+===============================================
+“Jane Doe”	25	1,75	“Canadá”
+0	1	2	3
+===============================================
+>>> len(jane)
+4
+
+  len( ) // indice negativos
+
+>>> jane[-1]
+'Canada'
+
+>>> jane[-2]
+1.75
+____________________________________________________________________________________________________________________________________
+Recuperar varios elementos de una tupla: cortar
+
+start	   Especifica el índice en el que desea iniciar el corte. El elemento de este índice se incluye en el segmento final.	0
+stop	   Especifica el índice en el que desea que el corte deje de extraer elementos. El elemento de este índice no está incluido en la porción final.	len(tuple_object)
+step	   Proporciona un valor entero que representa cuántos elementos atravesará el corte en cada paso. Si step es mayor que 1, entonces los elementos saltados no estarán 
+         en la porción resultante.
+
+
+>>> days = (
+...     "Monday",
+...     "Tuesday",
+...     "Wednesday",
+...     "Thursday",
+...     "Friday",
+...     "Saturday",
+...     "Sunday",
+... )
+
+>>> days[:5]
+('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday')
+
+>>> days[5:]
+('Saturday', 'Sunday')
+______________________________________________________________________________________________________________________________________________
+Explorando la inmutabilidad de las tuplas
