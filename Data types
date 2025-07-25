@@ -37,7 +37,7 @@ ________________________________________________________________________________
 
 Sequence is a collection data type. It is an ordered collection of items.
 
-set (conjunto)
+set (conjunto)                                    { }  [( )]
 List Data Type                                    [ ]
 Tuple Data Type  // INMUTABLE (no modificable)    ( )                  https://thenewstack.io/python-for-beginners-when-and-how-to-use-tuples/
 Range Data Type
