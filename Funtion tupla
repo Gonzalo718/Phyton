@@ -99,5 +99,216 @@ step	   Proporciona un valor entero que representa cuántos elementos atravesar�
 >>> days[5:]
 ('Saturday', 'Sunday')
 ______________________________________________________________________________________________________________________________________________
-Embalaje y desembalaje de tuplas
+Embalaje y desembalaje de tuplas   // Es para ver los valores que hay en las variables
+
+>>> point = (7, 14, 21)
+
+>>> x, y, z = point
+>>> x
+7
+>>> y
+14
+>>> z
+21
+
+_____________________________________________________________________________________________________________________________________
+temp  //variabe temporal para intercambiar los valores
+
+>>> a = 200
+>>> b = 400
+
+>>> temp = a
+>>> a = b
+>>> b = temp
+
+>>> a
+400
+>>> b
+200
+___________________________________________________________________________________________________________________________________
+(*) unpacking operator = that you can use to make your unpacking statements more flexible.
+
+>>> numbers = (1, 2, 3, 4, 5)
+
+>>> *head, last = numbers
+>>> head
+[1, 2, 3, 4]
+>>> last
+5
+
+>>> first, *middle, last = numbers
+>>> first
+1
+>>> middle
+[2, 3, 4]
+>>> last
+5
+
+>>> first, second, *tail = numbers
+>>> first
+1
+>>> second
+2
+>>> tail
+[3, 4, 5]
+
+>>> first, *_ = numbers
+>>> first
+1
+###################################################################################
+>>> name = ("John", "Doe")
+>>> contact = ("john@example.com", "55-555-5555")
+
+>>> (*name, *contact)
+('John', 'Doe', 'john@example.com', '55-555-5555')
+###################################################################################
+______________________________________________________________________________________________________
+Creando copias de una tupla
+
+>>> student_info = ("Linda", 18, ["Math", "Physics", "History"])
+
+>>> student_profile = student_info[:]
+>>> id(student_info) == id(student_profile)
+True
+>>> id(student_info[0]) == id(student_profile[0])
+True
+>>> id(student_info[1]) == id(student_profile[1])
+True
+>>> id(student_info[2]) == id(student_profile[2])
+True
+
+##########################################################
+ id() función, que toma un objeto como argumento y devuelve su identidad.    //es un identificador único que lo distingue de otros objetos.
+##########################################################
+
+ student_profile es un alias de student_info en lugar de una copia.
+__________________________________________________________________________________________________________________________________________
+Concatenación y repetición de tuplas
+
+Puedes utilizar el operador plus (+) para concatenar tuplas y el operador estrella (*) repetir el contenido de una tupla existente.
+
+>>> personal_info = ("John", 35)
+>>> professional_info = ("Computer science", ("Python", "Django", "Flask"))
+
+>>> profile = personal_info + professional_info
+>>> profile
+('John', 35, 'Computer science', ('Python', 'Django', 'Flask'))
+
+/////////////////////////////////////////////////////////////////////////////////////////
+El operador de concatenación tiene un variación aumentada, que utiliza el += operador. Así es como funciona este operador:
+
+
+>>> profile = ("John", 35)
+>>> id(profile)
+4420700928
+
+>>> profile += ("Computer science", ("Python", "Django", "Flask"))
+>>> id(profile)
+4406635200
+
+>>> profile
+('John', 35, 'Computer science', ('Python', 'Django', 'Flask'))
+___________________________________________________________________________________________________________________
+Repetir el contenido de una tupla
+
+Repetición Se trata de clonar el contenido de un contenedor determinado un número específico de veces. Las tuplas admiten esta 
+función con el operador de repetición (*), que toma dos operandos:
+
+>>> numbers = (1, 2, 3)
+
+>>> numbers * 3
+(1, 2, 3, 1, 2, 3, 1, 2, 3)
+
+>>> 4 * numbers
+(1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3)
+_________________________________________________________________________________________________________________________________
+Invertir y ordenar tuplas
+
+reversed() y sorted() funciones que puedes utilizar cuando necesites invertir y ordenar tuplas.
+
+###################################################################################
+Invertir una tupla con reversed()
+
+>>> days = (
+...     "Monday",
+...     "Tuesday",
+...     "Wednesday",
+...     "Thursday",
+...     "Friday",
+...     "Saturday",
+...     "Sunday",
+... )
+
+>>> reversed(days)
+<reversed object at 0x107032b90>
+
+>>> tuple(reversed(days))
+(
+    'Sunday',
+    'Saturday',
+    'Friday',
+    'Thursday',
+    'Wednesday',
+    'Tuesday',
+    'Monday'
+)
+#######################################################################
+Ordenar una tupla con sorted()
+
+>>> numbers = (2, 9, 5, 1, 6)
+
+>>> sorted(numbers)
+[1, 2, 5, 6, 9]
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+Cuando trabaje con tuplas que contengan datos heterogéneos, utilice sorted() No será una opción:
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+____________________________________________________________________________________________________________________________
+Encontrar elementos en una tupla
+
+in o not    // permite determinar si un objeto es un miembro de a colección de valores.
+
+>>> skills = ("Python", "Django", "Flask", "CSS")
+
+>>> "Flask" in skills
+True
+>>> "Flask" not in skills
+False
+
+>>> "pandas" in skills
+False
+>>> "pandas" not in skills
+True
+
+____________________________________________________________________________________________________________________________________
+
+Tuplas con campos con nombre: collections.namedtuple
+
+Por ejemplo, te gustaría hacer algo como person.name para acceder al nombre en lugar de hacerlo person[0], 
+que es mucho menos legible y explícito.
+
+>>> person = Person("John", 35, "Python Developer")
+>>> person.name
+'John'
+>>> person.age
+35
+>>> person.position
+'Python Developer'
+
+>>> person[0]
+'John'
+
+______________________________________________________________________________________________________________________________
+Clases de datos: dataclasses.dataclass
+
+para reemplazar sus tuplas nombradas con una herramienta más poderosa que tiene muchas características adicionales
+
+>>> from dataclasses import dataclass
+
+>>> @dataclass
+... class Employee:
+...     name: str
+...     age: int
+...     position: str = "Python Developer"
+...
 
