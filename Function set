@@ -1,0 +1,93 @@
+Set Union
+
+ {1, 2, 3, 4, 5}
+ 
+# Set union using .union()
+print(A.union(B))
+ 
+# Set union using the | operator
+print(A | B)
+ 
+# Output:
+# {1, 2, 3, 4, 5, 6, 8}
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+Set Intersection
+
+A = {1, 2, 4, 6, 8}
+B = {1, 2, 3, 4, 5}
+ 
+# Use the method
+print(A.intersection(B))
+ 
+# Use the & operator
+print(A & B)
+ 
+# Output:
+# {1, 2, 4}
+_::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+Set Difference
+
+A = {1, 2, 4, 6, 8}
+B = {1, 2, 3, 4, 5}
+ 
+# Use the method
+print(A.difference(B))
+ 
+# Use the - operator
+print(A - B)
+ 
+# Output:
+# {6, 8}
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+Supersets, Subsets, and Membership Using Python Sets
+
+A = {1, 2, 3, 4, 5}
+B = {1, 2, 4}
+ 
+print(A.issuperset(B))
+# Output: True
+ 
+print(B.issubset(A))
+# Output: True
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+Creating and Manipulating Sets in Python
+
+There are a few ways to create sets in Python. One way is to define a set literal using curly braces, much like we have been doing so far:
+
+S = {1, 10, 100}
+Another alternative is to pass a sequence to the set() function, like a list:
+
+S = set([1, 10, 100])
+Note that the set() function is also the only way to initialize an empty set, should you need it:
+
+empty_set = set()
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+ADD Y REMOVE
+
+Once a set is created, you can modify it using the .add() and .remove() methods:
+
+S = set()
+ 
+S.add(2)
+print(S)
+# Output: {2}
+ 
+S.remove(2)
+print(S)
+# Output: set()
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+COPY Y CLEAR
+
+S1 = {1, 2, 3}
+S2 = S1.copy()  # independent copy of S1
+S1.clear()
+ 
+print(S1)
+# Output: set()
+ 
+print(S2)
+# Output: {1, 2, 3}
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
