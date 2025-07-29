@@ -1,0 +1,460 @@
+They provide a mutable collection of key-value pairs that lets you efficiently access and mutate values through their corresponding keys:
+
+>>> config = {
+...     "color": "green",
+...     "width": 42,
+...     "height": 100,
+...     "font": "Courier",
+... }
+
+>>> # Access a value through its key
+>>> config["color"]
+'green'
+
+>>> # Update a value
+>>> config["font"] = "Helvetica"
+>>> config
+{
+    'color': 'green',
+    'width': 42,
+    'height': 100,
+    'font': 'Helvetica'
+}
+
+__________________________________________________________________________________________________________________________________________________________
+ globals() and locals():
+
+The globals() function returns a dictionary containing key-value pairs that map names to objects that live in your current global scope.
+
+>>> globals()
+{
+    '__name__': '__main__',
+    '__doc__': None,
+    '__package__': None,
+    ...
+}
+_______________________________________________________________________________________________________________________________________________________________
+.__dict__ 
+
+ is a dictionary that maps attribute names to their corresponding values in Python classes and objects. 
+_____________________________________________________________________________________________________________________________________________________________
+Creating Dictionaries in Python
+
+You can create a dictionary with  => "{ }" & ","   or => dict( )
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+Dictionary Literals
+
+You can define a dictionary by enclosing a comma-separated series of key-value pairs in curly braces ({}). To separate the keys from their values, 
+you need to use a colon (:). Here’s the syntax for a dictionary literal:
+
+>>> MLB_teams = {
+...     "Colorado": "Rockies",
+...     "Chicago": "White Sox",
+...     "Boston": "Red Sox",
+...     "Minnesota": "Twins",
+...     "Milwaukee": "Brewers",
+...     "Seattle": "Mariners",
+... }
+
+********************************************************************************************************************************************
+However, you can’t use unhashable objects as keys. If you try to, then you’ll get an error:
+
+Python no permite usar objetos mutables (listas, diccionarios, conjuntos) como claves en diccionarios o elementos de sets, porque no se puede garantizar que su valor hash sea constante
+
+# Lista como clave (error)
+try:
+    d1 = {[1, 2, 3]: "valor"}
+except TypeError as e:
+    print(e)  # unhashable type: 'list'
+
+# Tupla en su lugar (funciona)
+d2 = {(1, 2, 3): "valor"}
+print(d2[(1, 2, 3)])  # valor
+********************************************************************************************************************************************
+The dict() Constructor
+
+he arguments to dict() can be a series of keyword arguments, another mapping, or an iterable of key-value pairs. Here are the constructor’s signatures:
+
+dict()
+dict(**kwargs)
+dict(mapping, **kwargs)
+dict(iterable, **kwargs)
+
+
+
+>>> MLB_teams = dict(
+...     Colorado="Rockies",
+...     Chicago="White Sox",
+...     Boston="Red Sox",
+...     Minnesota="Twins",
+...     Milwaukee="Brewers",
+...     Seattle="Mariners",
+... )
+
+>>> MLB_teams
+{
+    'Colorado': 'Rockies',
+    'Chicago': 'White Sox',
+    'Boston': 'Red Sox',
+    'Minnesota': 'Twins',
+    'Milwaukee': 'Brewers',
+    'Seattle': 'Mariners'
+
+
+ALSO YOU CAN create a dictionary from an iterable of key-value pairs.............
+
+>>> MLB_teams = dict(
+...     [
+...         ("Colorado", "Rockies"),
+...         ("Chicago", "White Sox"),
+...         ("Boston", "Red Sox"),
+...         ("Minnesota", "Twins"),
+...         ("Milwaukee", "Brewers"),
+...         ("Seattle", "Mariners"),
+...     ]
+... )
+
+>>> MLB_teams
+{
+    'Colorado': 'Rockies',
+    'Chicago': 'White Sox',
+    'Boston': 'Red Sox',
+    'Minnesota': 'Twins',
+    'Milwaukee': 'Brewers',
+    'Seattle': 'Mariners'
+}
+
+__________________________________________________________________________________________________________________________________________
+Una forma interesante de crear diccionarios a partir de secuencias de valores es combinarlos con la función integrada zip() y luego llamar a dict()
+
+>>> places = [
+...     "Colorado",
+...     "Chicago",
+...     "Boston",
+...     "Minnesota",
+...     "Milwaukee",
+...     "Seattle",
+... ]
+
+>>> teams = [
+...     "Rockies",
+...     "White Sox",
+...     "Red Sox",
+...     "Twins",
+...     "Brewers",
+...     "Mariners",
+... ]
+
+>>> dict(zip(places, teams))
+{
+    'Colorado': 'Rockies',
+    'Chicago': 'White Sox',
+    'Boston': 'Red Sox',
+    'Minnesota': 'Twins',
+    'Milwaukee': 'Brewers',
+    'Seattle': 'Mariners'
+}
+
+The zip() function takes one or more iterables as arguments and yields tuples that combine items from each iterable. 
+Note that your original data must be stored in ordered sequences for this technique to work correctly because the order is essential.
+
+__________________________________________________________________________________________________________________________________________________________________________
+Using the .fromkeys() Class Method
+
+that lets you create new dictionaries from an iterable of keys and a default value.
+
+
+
+
+>>> inventory = dict.fromkeys(["apple", "orange", "banana", "mango"], 0)
+
+>>> inventory
+{'apple': 0, 'orange': 0, 'banana': 0, 'mango': 0}
+
+
+In this example, you create a dictionary to store an inventory of fruits. 
+Initially, you have the list of fruits in stock but don’t have the corresponding amounts. So, you use 0 as the default amount in the call to .fromkeys().
+
+*************************************************
+.fromkeys(iterable, value=None, /)
+
+The iterable argument provides the keys that you want to include in your dictionary.
+Even though the input iterable can have duplicate items, the final dictionary will have unique keys as usual.
+**************************************************
+_________________________________________________________________________________________________________________________________________________________________________
+Accessing Dictionary Values
+
+Once you’ve created a dictionary, you can access its content by keys. 
+
+>>> MLB_teams["Minnesota"]
+'Twins'
+>>> MLB_teams["Colorado"]
+'Rockies'
+
+
+
+Now say that you have the following dictionary with a person’s data:
+**************************************************************
+>>> person = {
+...     "first_name": "John",
+...     "last_name": "Doe",
+...     "age": 35,
+...     "spouse": "Jane",
+...     "children": ["Ralph", "Betty", "Bob"],
+...     "pets": {"dog": "Frieda", "cat": "Sox"},
+... }
+**************************************************************
+>>> person["children"][0]
+'Ralph'
+>>> person["children"][2]
+'Bob'
+
+>>> person["pets"]["dog"]
+'Frieda'
+>>> person["pets"]["cat"]
+'Sox'
+______________________________________________________________________________________________________________________________________________________
+Populating Dictionaries Incrementally
+
+Python dictionaries are dynamically sized data structures. This means that you can add key-value pairs to your dictionaries dynamically, 
+and Python will take care of increasing the dictionary size for you. This characteristic is helpful because it lets you dynamically populate dictionaries with data.
+
+When populating dictionaries, there are three common techniques that you can use. You can:
+
+1" Assign keys manually
+2" Add keys in a for loop
+3" Build a dictionary with a comprehension
+
+[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[
+Assigning Keys Manually
+
+Sometimes, you start by creating an empty dictionary with an empty pair of curly braces.
+
+>>> person = {}
+
+>>> person["first_name"] = "John"
+>>> person["last_name"] = "Doe"
+>>> person["age"] = 35
+>>> person["spouse"] = "Jane"
+>>> person["children"] = ["Ralph", "Betty", "Bob"]
+>>> person["pets"] = {"dog": "Frieda", "cat": "Sox"}
+
+>>> person
+{
+    'first_name': 'John',
+    'last_name': 'Doe',
+    'age': 35,
+    'spouse': 'Jane',
+    'children': ['Ralph', 'Betty', 'Bob'],
+    'pets': {'dog': 'Frieda', 'cat': 'Sox'}
+}
+[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]][[[[
+Adding Keys in a for Loop
+
+situations where a for loop is a good approach for populating an empty dictionary with new data. 
+
+>>> squares = {}
+
+>>> for integer in range(1, 10):
+...     squares[integer] = integer**2
+...
+
+>>> squares
+{1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64, 9: 81}
+[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[
+Building Dictionaries With Comprehensions
+
+is another great tool for creating and populating dictionaries with concise syntax. 
+
+>>> squares = {integer: integer**2 for integer in range(1, 10)}
+>>> squares
+{1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64, 9: 81}
+[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[
+[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[
+
+Exploring the dict Class Methods
+
+Getting Individual Keys: .get(key, default=None)
+
+El método .get() proporciona una forma cómoda de recuperar el valor asociado a una clave sin comprobar previamente si la clave existe.
+
+
+>>> inventory = {"apple": 100, "orange": 80, "banana": 100}
+
+>>> inventory.get("apple")
+100
+>>> print(inventory.get("mango"))
+None
+_______________________________________________________________________________________________________________________
+Retrieving All the Values: .values()
+
+The .values() method returns a dictionary view object, which provides a dynamic view of the values in a dictionary:
+
+
+>>> inventory = {"apple": 100, "orange": 80, "banana": 100}
+
+>>> inventory.values()
+dict_values([100, 80, 100])
+_______________________________________________________________________________________________________________________
+Accessing All the Keys: .keys()
+
+The .keys() method returns a dictionary view object with a dynamic view of the keys in the target dictionary:
+
+>>> inventory = {"apple": 100, "orange": 80, "banana": 100}
+
+>>> inventory.keys()
+dict_keys(['apple', 'orange', 'banana'])
+________________________________________________________________________________________________________________________
+Getting All the Items or Key-Value Pairs: .items()
+
+The .items() method returns a dictionary view containing tuples of keys and values.
+
+>>> inventory = {"apple": 100, "orange": 80, "banana": 100}
+
+>>> inventory.items()
+dict_items([('apple', 100), ('orange', 80), ('banana', 100)])
+___________________________________________________________________________________________________________________________________________________________
+Adding Key-Value Pairs and Updating Dictionaries
+
+.setdefault() and .update() 
+
+###########################################################################################################################################
+Setting One Key: .setdefault(key, default=None)
+
+ Si la clave está en el diccionario, el método devuelve el valor asociado. Si la clave no está en el diccionario, se inserta con el valor 
+predeterminado como valor asociado. A continuación, devuelve el valor predeterminado:
+
+
+>>> inventory = {"apple": 100, "orange": 80}
+
+>>> inventory.setdefault("apple")
+100
+>>> print(inventory.setdefault("mango"))
+None
+>>> inventory
+{'apple': 100, 'orange': 80, 'mango': None}
+>>> inventory.setdefault("banana", 0)
+0
+>>> inventory
+{'apple': 100, 'orange': 80, 'mango': None, 'banana': 0}
+###########################################################################################################################################
+Updating a Dictionary: .update([other])
+
+El método .update() fusiona un diccionario con otro diccionario o con un iterable de pares clave-valor.
+
+
+>>> config = {
+...     "color": "green",
+...     "width": 42,
+...     "height": 100,
+...     "font": "Courier",
+... }
+
+>>> user_config = {
+...     "path": "/home",
+...     "color": "red",
+...     "font": "Arial",
+...     "position": (200, 100),
+... }
+
+>>> config.update(user_config)
+
+>>> config
+{
+    'color': 'red',
+    'width': 42,
+    'height': 100,
+    'font': 'Arial',
+    'path': '/home',
+    'position': (200, 100)
+}
+_____________________________________________________________________________________________________________________________________________________________
+Removing Data From Dictionaries
+
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+Removing Keys: .pop(key[, default])
+
+El método .pop() elimina pares clave-valor por clave. Si la clave existe, el método devuelve su valor asociado.
+
+>>> inventory = {"apple": 100, "orange": 80, "banana": 100}
+
+>>> inventory.pop("apple")
+100
+>>> inventory
+{'orange': 80, 'banana': 100}
+
+>>> inventory.pop("mango")
+Traceback (most recent call last):
+    ...
+KeyError: 'mango'
+
+>>> inventory.pop("mango", 0)
+0
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+Deleting Items: .popitem()
+
+El método .popitem() elimina un par clave-valor de un diccionario. 
+
+
+>>> inventory = {"apple": 100, "orange": 80, "banana": 100}
+
+>>> inventory.popitem()
+('banana', 100)
+>>> inventory
+{'apple': 100, 'orange': 80}
+
+>>> inventory.popitem()
+('orange', 80)
+>>> inventory
+{'apple': 100}
+
+>>> inventory.popitem()
+('apple', 100)
+>>> inventory
+{}
+;;:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+Clearing Dictionaries: .clear()
+
+The .clear() method removes all the items from a dictionary:
+
+
+>>> inventory = {"apple": 100, "orange": 80, "banana": 100}
+>>> inventory
+{'apple': 100, 'orange': 80, 'banana': 100}
+>>> inventory.clear()
+>>> inventory
+{}
+;:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+Using Operators With Dictionaries
+
+Los operadores de pertenencia in y not in te permiten determinar si una clave, un valor o un elemento determinado se encuentra en un diccionario, 
+dependiendo del iterable de destino que utilices.
+
+>>> MLB_teams = {
+...     "Colorado": "Rockies",
+...     "Chicago": "White Sox",
+...     "Boston": "Red Sox",
+...     "Minnesota": "Twins",
+...     "Milwaukee": "Brewers",
+...     "Seattle": "Mariners",
+... }
+
+>>> "Milwaukee" in MLB_teams
+True
+>>> "Indianapolis" in MLB_teams
+False
+>>> "Indianapolis" not in MLB_teams
+True
+
+>>> "Milwaukee" in MLB_teams.keys()
+True
+>>> "Indianapolis" in MLB_teams.keys()
+False
+>>> "Indianapolis" not in MLB_teams.keys()
+True
+______________________________________________________________________________________________________________________________
+Equality and Inequality: == and !=
+
+
