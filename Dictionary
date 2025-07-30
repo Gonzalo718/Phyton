@@ -1,6 +1,6 @@
 They provide a mutable collection of key-value pairs that lets you efficiently access and mutate values through their corresponding keys:
 
->>> config = {
+>>> config = {                                                                                  https://realpython.com/python-dicts/
 ...     "color": "green",
 ...     "width": 42,
 ...     "height": 100,
@@ -457,4 +457,385 @@ True
 ______________________________________________________________________________________________________________________________
 Equality and Inequality: == and !=
 
+>>> [1, 2, 3] == [3, 2, 1]
+False
+>>> {1: 1, 2: 2, 3: 3} == {3: 3, 2: 2, 1: 1}
+True
 
+>>> [1, 2, 3] != [3, 2, 1]
+True
+>>> {1: 1, 2: 2, 3: 3} != {3: 3, 2: 2, 1: 1}
+False
+______________________________________________________________________________________________________________________________
+Union and Augmented Union: | and |=
+
+El operador de unión (|) crea un nuevo diccionario fusionando las claves y los valores de dos diccionarios iniciales. 
+
+>>> default_config = {
+...     "color": "green",
+...     "width": 42,
+...     "height": 100,
+...     "font": "Courier",
+... }
+
+>>> user_config = {
+...     "path": "/home",
+...     "color": "red",
+...     "font": "Arial",
+...     "position": (200, 100),
+... }
+
+>>> config = default_config | user_config
+>>> config
+{
+    'color': 'red',
+    'width': 42,
+    'height': 100,
+    'font': 'Arial',
+    'path': '/home',
+    'position': (200, 100)
+}
+
+
+don’t create a new dictionary for the final configuration. Instead, 
+you update the existing dictionary with the content of user_config using the augmented union operator.
+____________________________________________________________________________________________________________________________
+Use Built-in Functions With Dictionaries
+
+******************************************************************************************************
+all()	Returns True if all the items in an iterable are truthy and False otherwise
+any()	Returns True if at least one element in the iterable is truthy and False otherwise.
+
+
+
+>>> inventory = {"apple": 100, "orange": 80, "banana": 100, "mango": 200}
+>>> all(inventory.values())
+True
+>>> # Update the stock
+>>> inventory["mango"] = 0
+>>> all(inventory.values())
+False
+*****************************************************************************************************
+len()	Returns an integer representing the number of items in the input object.
+
+>>> MLB_teams = {
+...     "Colorado": "Rockies",
+...     "Chicago": "White Sox",
+...     "Boston": "Red Sox",
+...     "Minnesota": "Twins",
+...     "Milwaukee": "Brewers",
+...     "Seattle": "Mariners",
+... }
+
+>>> len(MLB_teams)
+6
+*****************************************************************************************************
+max()	Returns the largest value in an iterable or series of arguments.
+
+>>> computer_parts = {
+...     "CPU": 299.99,
+...     "Motherboard": 149.99,
+...     "RAM": 89.99,
+...     "GPU": 499.99,
+...     "SSD": 129.99,
+...     "Power Supply": 79.99,
+...     "Case": 99.99,
+...     "Cooling System": 59.99,
+... }
+
+>>> min(computer_parts.values())
+59.99
+>>> max(computer_parts.values())
+499.99
+*****************************************************************************************************
+min()	Returns the smallest value in an iterable or series of arguments.
+
+*****************************************************************************************************
+sorted()	Returns a new sorted list of the elements in the iterable.
+
+>>> students = {
+...     "Alice": 89.5,
+...     "Bob": 76.0,
+...     "Charlie": 92.3,
+...     "Diana": 84.7,
+...     "Ethan": 88.9,
+...     "Fiona": 95.6,
+...     "George": 73.4,
+...     "Hannah": 81.2,
+... }
+
+>>> dict(sorted(students.items(), key=lambda item: item[1]))
+{
+    'George': 73.4,
+    'Bob': 76.0,
+    'Hannah': 81.2,
+    'Diana': 84.7,
+    'Ethan': 88.9,
+    'Alice': 89.5,
+    'Charlie': 92.3,
+    'Fiona': 95.6
+}
+
+>>> dict(sorted(students.items(), key=lambda item: item[1], reverse=True))
+{
+    'Fiona': 95.6,
+    'Charlie': 92.3,
+    'Alice': 89.5,
+    'Ethan': 88.9,
+    'Diana': 84.7,
+    'Hannah': 81.2,
+    'Bob': 76.0,
+    'George': 73.4
+}
+
+>>> sorted(students)
+['Alice', 'Bob', 'Charlie', 'Diana', 'Ethan', 'Fiona', 'George', 'Hannah']
+
+>>> sorted(students.values())
+[73.4, 76.0, 81.2, 84.7, 88.9, 89.5, 92.3, 95.6]
+*****************************************************************************************************
+sum()	Returns the sum of a start value and the values in the input iterable from left to right.
+
+>>> daily_sales = {
+...     "Monday": 1500,
+...     "Tuesday": 1750,
+...     "Wednesday": 1600,
+...     "Thursday": 1800,
+...     "Friday": 2000,
+...     "Saturday": 2200,
+...     "Sunday": 2100,
+... }
+
+>>> sum(daily_sales.values()) / len(daily_sales)
+1850.0
+In this example, you use the sum() function to calculate the total sales. To do this, you use the .values() method. 
+Then, you compute the average with the help of len().
+*****************************************************************************************************
+_____________________________________________________________________________________________________________________________
+Iterating Over Dictionaries
+
+allowing you to iterate over their keys, values, and items.
+
+***************************************************************************************************
+Traversing Dictionaries by Keys
+
+Hay dos formas diferentes de iterar sobre las claves de un diccionario. Puedes usar el diccionario directamente 
+o utilizar el método .keys().
+
+>>> students = {
+...     "Alice": 89.5,
+...     "Bob": 76.0,
+...     "Charlie": 92.3,
+...     "Diana": 84.7,
+...     "Ethan": 88.9,
+...     "Fiona": 95.6,
+...     "George": 73.4,
+...     "Hannah": 81.2,
+... }
+
+>>> for student in students:
+...     print(student)
+...
+Alice
+Bob
+Charlie
+Diana
+Ethan
+Fiona
+George
+Hannah
+
+>>> for student in students.keys():
+...     print(student)
+...
+Alice
+Bob
+Charlie
+Diana
+Ethan
+Fiona
+George
+Hannah
+*****************************************************************************************************
+Iterating Over Dictionary Values
+
+Cuando se trata de iterar a través de los valores de un diccionario, puedes utilizar el método .values() para alimentar el bucle.
+
+>>> MLB_teams = {
+...     "Colorado": "Rockies",
+...     "Chicago": "White Sox",
+...     "Boston": "Red Sox",
+...     "Minnesota": "Twins",
+...     "Milwaukee": "Brewers",
+...     "Seattle": "Mariners",
+... }
+
+>>> for team in MLB_teams.values():
+...     print(team)
+...
+Rockies
+White Sox
+Red Sox
+Twins
+Brewers
+Mariners
+
+
+En este ejemplo, se itera sobre los equipos registrados de la MLB uno por uno. Ten en cuenta que cuando utilizas el método 
+.values(), no puedes acceder a las claves del diccionario.
+*******************************************************************************************************
+Looping Through Dictionary Items
+
+>>> for place, team in MLB_teams.items():
+...     print(place, "->", team)
+...
+Colorado -> Rockies
+Chicago -> White Sox
+Boston -> Red Sox
+Minnesota -> Twins
+Milwaukee -> Brewers
+Seattle -> Mariners
+**********************************************************************************************************
+______________________________________________________________________________________________________________________________
+Exploring Existing Dictionary-Like Classes
+
+
+
+*************************************************************************************************
+OrderedDict	    A dictionary subclass specially designed to remember the order of items, which is defined by the insertion order of keys.
+
+
+OrderedDict ya no es tan útil porque, desde Python 3.6, los diccionarios mantienen sus elementos en el
+mismo orden de inserción. Sin embargo, es posible que encuentres algunas diferencias interesantes entre dict 
+y OrderedDict que te ayuden a decidir qué diccionario se adapta mejor a tus necesidades.
+
+La clase Counter proporciona una herramienta eficaz y práctica para contar objetos:
+**************************************************************************************************
+Counter	A dictionary subclass specially designed to provide efficient counting capabilities out of the box.
+
+
+
+*************************************************************************************************
+defaultdict	A dictionary subclass specially designed to handle missing keys in dictionaries.
+
+
+automatically creates a new key and generates a default value for it when you try to access or modify a missing key.
+
+
+>>> from collections import defaultdict
+
+>>> departments = defaultdict(list)
+
+>>> for department, employee in employees:
+...     departments[department].append(employee)
+...
+
+>>> departments
+defaultdict(<class 'list'>,
+    {
+        'Sales': ['John', 'Martin'],
+        'Accounting': ['Kate'],
+        'Marketing': ['Elizabeth', 'Linda']
+     }
+)
+*************************************************************************************************
+_______________________________________________________________________________________________________________________________
+Creating Custom Dictionary-Like Classes
+
+También puedes crear clases personalizadas similares a diccionarios en Python. Para ello, puedes heredar de una de las siguientes clases:
+
+************************************
+La clase dict incorporada
+La clase collections.UserDict
+***********************************
+El primer enfoque puede dar lugar a algunos problemas, pero puede funcionar en situaciones en las que se desea añadir 
+funcionalidad que no implique cambiar la funcionalidad básica de dict. El segundo enfoque es más fiable y seguro, y se puede 
+utilizar en la mayoría de los casos.
+
+
+class SortableDict(dict):
+    def sort_by_keys(self, reverse=False):
+        sorted_items = sorted(
+            self.items(),
+            key=lambda item: item[0],
+            reverse=reverse
+        )
+        self.clear()
+        self.update(sorted_items)
+
+    def sort_by_values(self, reverse=False):
+        sorted_items = sorted(
+            self.items(),
+            key=lambda item: item[1],
+            reverse=reverse
+        )
+        self.clear()
+        self.update(sorted_items)
+
+
+En este ejemplo, se hereda de la clase dict incorporada. Además de la funcionalidad predeterminada de la clase, 
+se añaden dos nuevos métodos para ordenar el diccionario por claves y valores en el lugar, lo que significa que estos
+métodos no crean un nuevo objeto diccionario, sino que modifican el actual.
+
+
+
+
+
+Here’s how your class works in practice:
+
+>>> from sorted_dict import SortableDict
+
+>>> students = SortableDict(
+...     {
+...         "Alice": 89.5,
+...         "Bob": 76.0,
+...         "Charlie": 92.3,
+...         "Diana": 84.7,
+...         "Ethan": 88.9,
+...         "Fiona": 95.6,
+...         "George": 73.4,
+...         "Hannah": 81.2,
+...     }
+... )
+
+>>> id(students)
+4350960304
+
+>>> students.sort_by_values(reverse=True)
+>>> students
+{
+    'Fiona': 95.6,
+    'Charlie': 92.3,
+    'Alice': 89.5,
+    'Ethan': 88.9,
+    'Diana': 84.7,
+    'Hannah': 81.2,
+    'Bob': 76.0,
+    'George': 73.4
+}
+
+>>> students.sort_by_keys()
+>>> students
+{
+    'Alice': 89.5,
+    'Bob': 76.0,
+    'Charlie': 92.3,
+    'Diana': 84.7,
+    'Ethan': 88.9,
+    'Fiona': 95.6,
+    'George': 73.4,
+    'Hannah': 81.2
+}
+
+>>> id(students)
+4350960304
+
+
+En este ejemplo, se crea una instancia de SortableDict. A continuación, se llama al método .sort_by_values() 
+para ordenar el diccionario por calificaciones en orden inverso. Después, se llama al método .sort_by_keys() 
+para ordenar el diccionario alfabéticamente por nombres de estudiantes, que son las claves.
+
+Las líneas resaltadas muestran que la identidad de la instancia permanece sin cambios durante el proceso de 
+ordenación. Esto confirma que tanto el método .sort_by_keys() como el método .sort_by_values() modifican el 
+diccionario en el lugar en lugar de crear nuevos diccionarios.
+______________________________________________________________________________________________________
