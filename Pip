@@ -1,0 +1,37 @@
+To verify that we haven’t misled you, try to do this:
+
+open the Windows console (CMD or PowerShell, whatever you prefer)
+execute the following command:
+pip --version
+
+or
+
+pip3 --version
+ 
+Check yourself which of these works for you in your OS's environment.
+______________________________________________________________________________________
+If you want to know what Python packages have been installed so far, you can use the list operation – just like this:
+
+
+pip list
+
+_____________________________________________________________________________________________________
+The pip list isn't very informative, and it may happen that it won't satisfy your curiosity. Fortunately, 
+there’s a command that can tell you more about any of the installed packages (note the word installed). 
+The syntax of the command looks as follows:
+
+
+pip show package_name
+_______________________________________________________________________________________________________________________________
+In effect, pip uses the Internet to query PyPI and to download the required data. This means that you have to have a network connection 
+working whenever you’re going to ask pip for anything that may involve direct interactions with the PyPI infrastructure.
+________________________________________________________________________________________________________________________________
+pip help operation – shows a brief description of pip;
+pip list – shows a list of the currently installed packages;
+pip show package_name – shows package_name info including the package's dependencies;
+pip search anystring – searches through PyPI directories in order to find packages whose names contain anystring;
+pip install name – installs name system-wide (expect problems when you don't have administrative rights);
+pip install --user name – installs name for you only; no other platform user will be able to use it;
+pip install -U name – updates a previously installed package;
+pip uninstall name – uninstalls a previously installed package.
+
