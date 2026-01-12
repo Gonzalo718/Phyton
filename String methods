@@ -1,0 +1,129 @@
+capitalize() 
+
+# Demonstrating the capitalize() method:
+print('aBcD'.capitalize())
+
+This is what it prints:
+
+Output
+Abcd
+_______________________________________________________________________________________________________________________________________________________
+center()
+
+method makes a copy of the original string, trying to center it inside a field of a specified width.
+
+# Demonstrating the center() method:
+print('[' + 'alpha'.center(10) + ']')
+
+Its output looks as follows:
+
+Output
+[  alpha   ]
+_______________________________________________________________________________________________________________________________________________________
+find() 
+
+it looks for a substring and returns the index of the first occurrence of this substring
+
+# Demonstrating the find() method:
+print("Eta".find("ta"))
+print("Eta".find("mma"))
+
+The example prints:
+
+Output
+1
+-1
+_______________________________________________________________________________________________________________________________________________________
+isalnum()
+
+checks if the string contains only digits or alphabetical characters (letters), and returns True or False according to the result.
+
+# Demonstrating the isalnum() method:
+print('lambda30'.isalnum())
+print('lambda'.isalnum())
+print('30'.isalnum())
+print('@'.isalnum())
+print('lambda_30'.isalnum())
+print(''.isalnum())
+
+The example output is:
+
+Output
+True
+True
+True
+False
+False
+False
+_______________________________________________________________________________________________________________________________________________________
+lstrip()
+
+method returns a newly created string formed from the original one by removing all leading whitespaces.
+
+# Demonstrating the lstrip() method:
+print("[" + " tau ".lstrip() + "]")
+    
+The example outputs:
+
+[tau ]
+
+***************************************
+print("www.cisco.com".lstrip("w."))
+****************************************
+Brackets aren't needed here, as the output looks as follows:
+
+Output
+cisco.com
+
+_____________________________________________________________________________________________________________________________________________________
+split()
+The method assumes that the substrings are delimited by whitespaces – the spaces don't take part in the operation, and aren't copied into the resulting list.
+
+If the string is empty, the resulting list is empty too.
+
+# Demonstrating the split() method:
+print("phi       chi\npsi".split())
+
+The example produces the following output:
+
+Output
+['phi', 'chi', 'psi']
+
+
+
+_______________________________________________________________________________________________________________________________________________________
+Some of the methods offered by strings are:
+
+capitalize() – changes all string letters to capitals;
+center() – centers the string inside the field of a known length;
+count() – counts the occurrences of a given character;
+join() – joins all items of a tuple/list into one string;
+lower() – converts all the string's letters into lower-case letters;
+lstrip() – removes the white characters from the beginning of the string;
+replace() – replaces a given substring with another;
+rfind() – finds a substring starting from the end of the string;
+rstrip() – removes the trailing white spaces from the end of the string;
+split() – splits the string into a substring using a given delimiter;
+strip() – removes the leading and trailing white spaces;
+swapcase() – swaps the letters' cases (lower to upper and vice versa)
+title() – makes the first letter in each word upper-case;
+upper() – converts all the string's letter into upper-case letters.
+
+2. String content can be determined using the following methods (all of them return Boolean values):
+
+endswith() – does the string end with a given substring?
+isalnum() – does the string consist only of letters and digits?
+isalpha() – does the string consist only of letters?
+islower() – does the string consists only of lower-case letters?
+isspace() – does the string consists only of white spaces?
+isupper() – does the string consists only of upper-case letters?
+startswith() – does the string begin with a given substring?
+
+
+
+
+_______________________________________________________________________________________________________________________________________________________
+
+
+
+_______________________________________________________________________________________________________________________________________________________
