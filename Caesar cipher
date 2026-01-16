@@ -1,0 +1,28 @@
+# Pedimos el texto
+text = input("Enter message: ")
+
+# Inicializamos shift con un valor inválido
+shift = 0
+
+# Mientras shift no esté entre 1 y 25, seguimos preguntando
+while shift < 1 or shift > 25:
+    shift = int(input("Enter the cipher shift value (1..25): "))
+    if shift < 1 or shift > 25:
+        print("Incorrect shift value!")
+
+cipher = ""
+
+# Recorremos el texto
+for char in text:
+    if char.isalpha():
+        if char.isupper():
+            first = ord('A')
+        else:
+            first = ord('a')
+
+        # Aplicamos el desplazamiento
+        cipher += chr((ord(char) - first + shift) % 26 + first)
+    else:
+        cipher += char
+
+print(cipher)
