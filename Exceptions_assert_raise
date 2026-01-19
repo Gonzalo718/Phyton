@@ -1,0 +1,67 @@
+ZeroDivisionError is a special case of a more general exception class named ArithmeticError;
+ArithmeticError is a special case of a more general exception class named just Exception;
+Exception is a special case of a more general class named BaseException;
+
+Remember:
+
+the order of the branches matters!
+don't put more general exceptions before more concrete ones;
+this will make the latter one unreachable and useless;
+moreover, it will make your code messy and inconsistent;
+Python won't generate any error messages regarding this issue.
+______________________________________________________________________________________________________________
+raise
+
+se usa para lanzar (provocar) una excepción de forma manual.
+Es decir, tú decides cuándo ocurre un error y qué tipo de error es.
+
+def bad_fun(n):
+    try:
+        return n / 0
+    except:
+        print("I did it again!")
+        raise
+
+
+try:
+    bad_fun(0)
+except ArithmeticError:
+    print("I see!")
+
+print("THE END.")
+
+In effect, the code outputs:
+
+Output
+I did it again!
+I see!
+THE END.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+raise es como decirle a Python:
+“Aquí hay un error y no quiero que el programa siga”
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+_________________________________________________________________________________________________________
+asser
+
+“Asegúrate de que esto sea cierto”
+
+Si no se cumple → ❌ error
+Si se cumple → ✅ el programa sigue
+
+x = 10
+assert x > 0
+print("Todo bien")
+
+Se imprime:
+
+Todo bien
+
+
+
+
+
+
+
+
+
+
