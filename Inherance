@@ -1,0 +1,68 @@
+The super() function creates a context in which you don't have to (moreover, you mustn't) pass the self argument to the method being invoked – 
+  this is why it's possible to activate the superclass constructor using only one argument.
+
+class Super:
+    def __init__(self, name):
+        self.name = name
+
+    def __str__(self):
+        return "My name is " + self.name + "."
+
+
+class Sub(Super):
+    def __init__(self, name):
+        super().__init__(name)
+
+
+obj = Sub("Andy")
+
+print(obj)
+____________________________________________________________________________________________-
+Let's try to do something similar, but with properties (more precisely: with class variables).
+
+Take a look at the example in the editor.
+
+# Testing properties: class variables.
+class Super:
+    supVar = 1
+
+
+class Sub(Super):
+    subVar = 2
+
+
+obj = Sub()
+
+print(obj.subVar)
+print(obj.supVar)
+
+Both these variables are visible inside the object of class Sub – this is why the code outputs:
+
+Output
+2
+1
+______________________________________________________________________________________________________
+Multiple inheritance occurs when a class has more than one superclass. Syntactically, such inheritance is presented as a comma-separated list of 
+  superclasses put inside parentheses after the new class name – just like here:
+
+class SuperA:
+    var_a = 10
+    def fun_a(self):
+        return 11
+ 
+ 
+class SuperB:
+    var_b = 20
+    def fun_b(self):
+        return 21
+ 
+ 
+class Sub(SuperA, SuperB):
+    pass
+ 
+obj = Sub()
+ 
+print(obj.var_a, obj.fun_a())
+print(obj.var_b, obj.fun_b())
+
+____________________________________________________________________________________________________________________________________________________________________________________________________________
