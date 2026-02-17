@@ -1,0 +1,13 @@
+The yield statement
+
+Take a look at this function:
+
+
+def fun(n):
+    for i in range(n):
+        return i
+
+
+First of all, it provides the value of the expression specified after the yield keyword, just like return, but doesn't lose the state of the function.
+
+All the variables' values are frozen, and wait for the next invocation, when the execution is resumed (not taken from scratch, like after return).
