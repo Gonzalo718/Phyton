@@ -1,0 +1,47 @@
+The list() function
+
+The list() function can transform a series of subsequent generator invocations into a real list:
+
+def powers_of_2(n):
+    power = 1
+    for i in range(n):
+        yield power
+        power *= 2
+ 
+ 
+t = list(powers_of_2(3))
+print(t)
+
+PS D:\Phyton> & C:/Users/gl634/AppData/Local/Programs/Python/Python313/python.exe "d:/Phyton/Cisco Phyton/generator.py"
+[1, 2, 4]
+_____________________________________________________________________________________________________________________________
+The in operator
+
+Moreover, the context created by the in operator allows you to use a generator, too.
+
+The example shows how to do it:
+
+def powers_of_2(n):
+    power = 1
+    for i in range(n):
+        yield power
+        power *= 2
+ 
+ 
+for i in range(20):
+    if i in powers_of_2(4):
+        print(i)
+
+
+PS D:\Phyton> & C:/Users/gl634/AppData/Local/Programs/Python/Python313/python.exe "d:/Phyton/Cisco Phyton/generator.py"
+1
+2
+4
+8
+_____________________________________________________________________________________________________________________________
+
+
+_____________________________________________________________________________________________________________________________
+
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
