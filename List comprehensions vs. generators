@@ -1,0 +1,22 @@
+Now look at the code below and see if you can find the detail that turns a list comprehension into a generator:
+
+
+the_list = [1 if x % 2 == 0 else 0 for x in range(10)]
+the_generator = (1 if x % 2 == 0 else 0 for x in range(10))
+ 
+for v in the_list:
+    print(v, end=" ")
+print()
+ 
+for v in the_generator:
+    print(v, end=" ")
+print()
+
+
+It's the parentheses. The brackets make a comprehension, the parentheses make a generator.
+
+The code, however, when run, produces two identical lines:
+
+Output
+1 0 1 0 1 0 1 0 1 0
+1 0 1 0 1 0 1 0 1 0
