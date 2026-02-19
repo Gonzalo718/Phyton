@@ -39,6 +39,14 @@ print(frutas)  # Imprime ["manzana", "pera", "uva"]
 
 frutas.reverse()
 print(frutas)  # Imprime ["uva", "pera", "manzana"]
+_________________________________________________________________________________________
+the_list = [1 if x % 2 == 0 else 0 for x in range(10)]
 
+print(the_list)
+
+Console 
+terminal
+sync
+[1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
 
  
