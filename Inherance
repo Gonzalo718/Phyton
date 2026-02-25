@@ -70,3 +70,50 @@ __iter__() which should return the object itself and which is invoked once (it's
 __next__() which is intended to return the next value (first, second, and so on) of the desired series – it will be invoked by the for/in 
   statements in order to pass through the next iteration; if there are no 
   more values to provide, the method should raise the StopIteration exception.
+
+
+
+
+# Definimos una clase llamada Vowels
+class Vowels:
+    
+    # Constructor: se ejecuta automáticamente cuando creamos el objeto
+    def __init__(self):
+        # Guardamos una cadena con las vocales (y un espacio al final)
+        self.vow = "aeiouy "
+        
+        # Variable que llevará el control de la posición actual
+        self.pos = 0
+ 
+    # Este método convierte el objeto en iterable
+    # Se ejecuta cuando usamos iter() o cuando comienza un for
+    def __iter__(self):
+        # Retornamos el mismo objeto porque será su propio iterador
+        return self
+ 
+    # Este método devuelve el siguiente valor cada vez que el for lo pide
+    def __next__(self):
+        
+        # Si la posición actual es igual al tamaño de la cadena
+        # significa que ya no hay más caracteres
+        if self.pos == len(self.vow):
+            
+            # Esta excepción le dice al for que debe detenerse
+            raise StopIteration
+        
+        # Aumentamos la posición en 1
+        self.pos += 1
+        
+        # Devolvemos el carácter actual
+        # self.pos - 1 porque primero incrementamos la posición
+        return self.vow[self.pos - 1]
+ 
+ 
+# Creamos un objeto de la clase Vowels
+vowels = Vowels()
+
+# Recorremos el objeto como si fuera una lista
+for v in vowels:
+    
+    # Imprimimos cada vocal sin salto de línea
+    print(v, end=' ')
