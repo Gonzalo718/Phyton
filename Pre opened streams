@@ -1,0 +1,22 @@
+We said earlier that any stream operation must be preceded by the open() function invocation. There are three well-defined exceptions to the rule.
+
+When our program starts, the three streams are already opened and don't require any extra preparations. What's more, your program can use these 
+streams explicitly if you take care to import the sys module:
+
+
+import sys
+ 
+Let's analyze them:
+
+sys.stdinStandard InputLeer datos que entran
+sys.stdoutStandard OutputMostrar datos normales
+sys.stderrStandard ErrorMostrar errores
+
+import sys
+
+# Redirigimos stderr al archivo
+sys.stderr = open("errores.log", "w")
+
+sys.stderr.write("Este error ya no aparece en pantalla\\n")
+sys.stderr.write("Se guarda directo en errores.log\\n")
+
