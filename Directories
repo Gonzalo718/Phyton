@@ -1,0 +1,55 @@
+Creating directories in Python
+
+import os
+
+os.mkdir("my_first_directory")
+print(os.listdir())
+
+The mkdir function creates a directory in the specified path. Note that running the program twice will raise a FileExistsError.
+
+_________________________________________________________________________________________________
+Recursive directory creation
+
+the os module provides a function called makedirs, which makes this task easier.
+
+import os
+
+os.makedirs("my_first_directory/my_second_directory")
+os.chdir("my_first_directory")
+print(os.listdir())
+
+Windows:
+mkdir my_first_directory/my_second_directory
+
+________________________________________________________________________________________________
+Where am I now?
+
+ getcwd
+
+import os
+
+os.makedirs("my_first_directory/my_second_directory")
+os.chdir("my_first_directory")
+print(os.getcwd())
+os.chdir("my_second_directory")
+print(os.getcwd())
+___________________________________________________________________________________________________
+Deleting directories in Python
+
+ rmdir
+
+import os
+
+os.mkdir("my_first_directory")
+print(os.listdir())
+os.rmdir("my_first_directory")
+print(os.listdir())
+_________________________________________________________________________________________________________
+Resumen de funciones usadas
+
+Función Qué haceos.
+os.makedirs()Crea carpetas anidadasos.
+os.chdir()Entra a una carpetaos.
+os.listdir()Lista el contenido de la carpeta actual.
+os.getcwd()Muestra en qué carpeta estás actualmente
+
