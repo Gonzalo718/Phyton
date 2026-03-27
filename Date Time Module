@@ -1,0 +1,122 @@
+The gmtime() and localtime() functions
+Some of the functions available in the time module require knowledge of the struct_time class, but before we get to know them, 
+let's see what the class looks like:
+
+
+time.struct_time:
+    tm_year   # Specifies the year.
+    tm_mon    # Specifies the month (value from 1 to 12)
+    tm_mday   # Specifies the day of the month (value from 1 to 31)
+    tm_hour   # Specifies the hour (value from 0 to 23)
+    tm_min    # Specifies the minute (value from 0 to 59)
+    tm_sec    # Specifies the second (value from 0 to 61 )
+    tm_wday    # Specifies the weekday (value from 0 to 6)
+    tm_yday   # Specifies the year day (value from 1 to 366)
+    tm_isdst  # Specifies whether daylight saving time applies (1 – yes, 0 – no, -1 – it isn't known)
+    tm_zone   # Specifies the timezone name (value in an abbreviated form)
+    tm_gmtoff # Specifies the offset east of UTC (value in seconds)
+_________________________________________________________________________
+The asctime() and mktime() functions
+
+import time
+
+timestamp = 1572879180
+st = time.gmtime(timestamp)
+
+print(time.asctime(st))
+print(time.mktime((2019, 11, 4, 14, 53, 0, 0, 308, 0)))
+
+Console 
++++++++++++++++++++++++++++
+Mon Nov  4 14:53:00 2019
+1572879180.0
+++++++++++++++++++++++++++++
+________________________________________________________________________
+Creating datetime objects
+
+The class that combines date and time is called datetime.
+
+datetime(year, month, day, hour, minute, second, microsecond, tzinfo, fold)
+
+today() — returns the current local date and time with the tzinfo attribute set to None;
+now() — returns the current local date and time the same as the today method, unless we pass the optional argument tz to it. 
+        The argument of this method must be an object of the tzinfo subclass;
+utcnow() — returns the current UTC date and time with the tzinfo attribute set to None.
+
+
+from datetime import datetime
+
+print("today:", datetime.today())
+print("now:", datetime.now())
+print("utcnow:", datetime.utcnow())
+
+Console 
++++++++++++++++++++++++++++++++++++++++++
+today: 2026-03-26 00:36:07.860434
+now: 2026-03-26 00:36:07.865681
+utcnow: 2026-03-26 00:36:07.866845
++++++++++++++++++++++++++++++++++++++++++
+_________________________________________________________________
+Date and time formatting
+
+The strftime method takes only one argument in the form of a string specifying a format that can consist of directives.
+
+from datetime import date
+
+d = date(2020, 1, 4)
+print(d.strftime('%Y/%m/%d'))
++++++++++++++++++++++++++++++++++++++++++
+2020/01/04
++++++++++++++++++++++++++++++++++++++++++
+%Y – returns the year with the century as a decimal number. In our example, this is 2020.
+%m – returns the month as a zero-padded decimal number. In our example, it's 01.
+%d – returns the day as a zero-padded decimal number. In our example, it's 04.
+_________________________________________________________________
+The strptime() method
+
+The strptime method requires you to specify the format in which you saved the date and time.
+
+from datetime import datetime
+print(datetime.strptime("2019/11/04 14:53:00", "%Y/%m/%d %H:%M:%S"))
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2019-11-04 14:53:00
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+_________________________________________________________________
+Creating timedelta objects
+
+ the timedelta object only stores days, seconds, and microseconds internally. 
+
+from datetime import timedelta
+
+delta = timedelta(weeks=2, days=2, hours=3)
+print(delta)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Result:
+
+Output
+16 days, 3:00:00
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+_________________________________________________________________
+from datetime import timedelta
+from datetime import date
+from datetime import datetime
+
+delta = timedelta(weeks=2, days=2, hours=2)
+print(delta)
+
+delta2 = delta * 2
+print(delta2)
+
+d = date(2019, 10, 4) + delta2
+print(d)
+
+dt = datetime(2019, 10, 4, 14, 53) + delta2
+print(dt)
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+16 days, 2:00:00
+32 days, 4:00:00
+2019-11-05
+2019-11-05 18:53:00
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+_________________________________________________________________
