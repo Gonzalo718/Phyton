@@ -1,4 +1,24 @@
+The constructor of the time class✨ accepts six arguments (hour, minute, second, microsecond, tzinfo, and fold). Each of these arguments is optional.
+
+
+from datetime import time
+ 
+t = time(13, 22, 20)
+ 
+print("Hour:", t.hour) # Hour: 13
+print("Minute:", t.minute) # Minute: 22
+print("Second:", t.second) # Second: 20
+__________________________________________________________________________________________________________________________________ 
+The time module✨ contains the sleep function, which suspends program execution for a given number of seconds, e.g.:
+
+
+import time
+ 
+time.sleep(10)
+print("Hello world!") # This text will be displayed after 10 seconds.
+__________________________________________________________________________________________________________________________________
 The gmtime() and localtime() functions
+
 Some of the functions available in the time module require knowledge of the struct_time class, but before we get to know them, 
 let's see what the class looks like:
 
@@ -32,16 +52,16 @@ Mon Nov  4 14:53:00 2019
 1572879180.0
 ++++++++++++++++++++++++++++
 ________________________________________________________________________
-Creating datetime objects
+Creating datetime✨ objects
 
 The class that combines date and time is called datetime.
 
 datetime(year, month, day, hour, minute, second, microsecond, tzinfo, fold)
 
-today() — returns the current local date and time with the tzinfo attribute set to None;
-now() — returns the current local date and time the same as the today method, unless we pass the optional argument tz to it. 
+    today() — returns the current local date and time with the tzinfo attribute set to None;
+    now() — returns the current local date and time the same as the today method, unless we pass the optional argument tz to it. 
         The argument of this method must be an object of the tzinfo subclass;
-utcnow() — returns the current UTC date and time with the tzinfo attribute set to None.
+    utcnow() — returns the current UTC date and time with the tzinfo attribute set to None.
 
 
 from datetime import datetime
@@ -57,61 +77,64 @@ now: 2026-03-26 00:36:07.865681
 utcnow: 2026-03-26 00:36:07.866845
 +++++++++++++++++++++++++++++++++++++++++
 _________________________________________________________________
-Date and time formatting
+Date and time formatting✨
 
 The strftime method takes only one argument in the form of a string specifying a format that can consist of directives.
 
-from datetime import date
+    from datetime import date✨
 
-d = date(2020, 1, 4)
-print(d.strftime('%Y/%m/%d'))
+    d = date(2020, 1, 4)
+    print(d.strftime('%Y/%m/%d'))
 +++++++++++++++++++++++++++++++++++++++++
 2020/01/04
 +++++++++++++++++++++++++++++++++++++++++
 %Y – returns the year with the century as a decimal number. In our example, this is 2020.
 %m – returns the month as a zero-padded decimal number. In our example, it's 01.
 %d – returns the day as a zero-padded decimal number. In our example, it's 04.
-_________________________________________________________________
+%H – returns the hour as a zero-padded decimal number;
+%M – returns the minute as a zero-padded decimal number;
+%S – returns the second as a zero-padded decimal number.
+_____________________________________________________________________________________________________________________________
 The strptime() method
 
 The strptime method requires you to specify the format in which you saved the date and time.
 
-from datetime import datetime
-print(datetime.strptime("2019/11/04 14:53:00", "%Y/%m/%d %H:%M:%S"))
+    from datetime import datetime
+    print(datetime.strptime("2019/11/04 14:53:00", "%Y/%m/%d %H:%M:%S"))
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 2019-11-04 14:53:00
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-_________________________________________________________________
+______________________________________________________________________________________________________________________________
 Creating timedelta objects
 
- the timedelta object only stores days, seconds, and microseconds internally. 
+the timedelta object only stores days, seconds, and microseconds internally. 
 
-from datetime import timedelta
+    from datetime import timedelta
 
-delta = timedelta(weeks=2, days=2, hours=3)
-print(delta)
+    delta = timedelta(weeks=2, days=2, hours=3)
+    print(delta)
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Result:
 
 Output
 16 days, 3:00:00
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-_________________________________________________________________
-from datetime import timedelta
-from datetime import date
-from datetime import datetime
+_______________________________________________________________________________________________________________________________
+    from datetime import timedelta
+    from datetime import date
+    from datetime import datetime
 
-delta = timedelta(weeks=2, days=2, hours=2)
-print(delta)
+    delta = timedelta(weeks=2, days=2, hours=2)
+    print(delta)
 
-delta2 = delta * 2
-print(delta2)
+    delta2 = delta * 2
+    print(delta2)
 
-d = date(2019, 10, 4) + delta2
-print(d)
+    d = date(2019, 10, 4) + delta2
+    print(d)
 
-dt = datetime(2019, 10, 4, 14, 53) + delta2
-print(dt)
+    dt = datetime(2019, 10, 4, 14, 53) + delta2
+    print(dt)
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 16 days, 2:00:00
